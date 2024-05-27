@@ -3,9 +3,9 @@
 Starts AirBnB Flask main application
 """
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
-from app.v1.views import app_views
+from api.v1.views import app_views
 from os import getenv
 
 API_HOST = getenv('HBNB_API_HOST', '0.0.0.0')
@@ -23,7 +23,7 @@ def close_api(exception):
 @app.errorhandler(404)
 def page_not_found(error):
     """returns a status code response"""
-    return jasonify("error": "Not found"), 404
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
