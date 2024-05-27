@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-""" View for accessing City objects"""
+"""View for accessing City objects"""
 from flask import request, jsonify, abort
 from api.v1.views import app_views
 from models import storage
 from models.state import State
 from models.city import City
 
+
 @app_views.route('/api/v1/states/<state_id>/cities', methods=['GET'])
 def all_state_cities(state_id):
-	""" handles requests for cities in a state from storage"""
+	"""handles requests for cities in a state from storage"""
 	state = storage.get(State, state_id)
 	if state is None:
 		abort(404)
@@ -18,6 +19,7 @@ def all_state_cities(state_id):
 		if city.state_id == state.id:
 			list_city.append(city.to_dict())
 	return jsonify(city_list)
+
 
 @app_views.route('/api/v1/states/<state_id>/cities', methods=['POST'])
 def create_city(state_id):
@@ -34,6 +36,7 @@ def create_city(state_id):
 	new_city = City(**new_city)
 	new-city.save()
 	return jsonify(new_city.to_dict()), 201
+
 
 @app_views.route('GET /api/v1/cities/<city_id>', methods=['GET', 'PUT', 'DELETE'])
 def city(sity_id):
