@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 """New view for State objects that handles all default RESTFul API actions"""
 
-from flask import Flask, abort
+from flask import jsonify, abort, request
 from api.v1.views import app_views
 from os import name
 from models import storage
 from models.state import State
-from flask import request, jsonify
 
 
-@app_views.route('/states', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/', methods=['GET'], strict_slashes=False)
 def get_all():
     """retrieves the list of all State objects"""
     states = storage.all(State)

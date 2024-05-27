@@ -3,8 +3,8 @@
 To create all blueprints for our Flask web application
 """
 
+from flask import Flask, jsonify
 from api.v1.views import app_views
-from flask import jsonify
 from models import storage
 from models.amenity import Amenity
 from models.city import City
@@ -15,7 +15,6 @@ from models.user import User
 
 classes = {"amenities": Amenity, "cities": City, "places": Place,
            "reviews": Review, "states": State, "users": User}
-
 
 @app_views.route('/status')
 def status():
