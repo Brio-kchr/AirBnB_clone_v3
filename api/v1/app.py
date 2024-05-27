@@ -14,10 +14,11 @@ API_PORT = getenv('HBNB_API_PORT', 5000)
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def close_api(exception):
-	""" Closes storage if we encounter an exception """
-	storage.close()
+    """ Closes storage if we encounter an exception """
+    storage.close()
 
 
 @app.errorhandler(404)
@@ -27,4 +28,4 @@ def page_not_found(error):
 
 
 if __name__ == "__main__":
-	app.run(host=API_HOST, port=API_PORT, threaded=True)
+    app.run(host=API_HOST, port=API_PORT, threaded=True)

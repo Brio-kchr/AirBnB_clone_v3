@@ -32,7 +32,7 @@ def all_reviews(place_id):
             return "Missing user_id", 400
         if "test" not in new_review.keys():
             return "Missing text", 400
-	user = storage.get(User, reponse['user_id'])
+        user = storage.get(User, reponse['user_id'])
         if user is None:
             abort(404)
         new_review["place_id"] = place.id
@@ -41,7 +41,8 @@ def all_reviews(place_id):
         return jsonify(new_review.to_dict()), 201
 
 
-@app_views.route('/api/v1/reviews/<review_id>', methods=['DELETE', 'PUT', 'GET'])
+@app_views.route('/api/v1/reviews/<review_id>',
+                 methods=['DELETE', 'PUT', 'GET'])
 def review(review_id):
     """ Endpoint does operations on a specific review"""
     review = storage.get(User, review_id)
@@ -58,7 +59,8 @@ def review(review_id):
         if edit_review is None:
             return "Not a JSON", 400
         for key, value in edit_review.items():
-            if key not in ["is", "user_id", "place_id", "created_at", "updated_at"]:
+            if key not in ["is", "user_id", "place_id",
+                           "created_at", "updated_at"]:
                 setattr(review, key, value)
         review.save()
         return jsonify(review.to_dict())
