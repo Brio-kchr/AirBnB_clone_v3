@@ -12,6 +12,7 @@ API_HOST = getenv('HBNB_API_HOST', '0.0.0.0')
 API_PORT = getenv('HBNB_API_PORT', 5000)
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
 
 
