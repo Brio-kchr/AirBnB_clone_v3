@@ -5,7 +5,6 @@ Starts AirBnB Flask main application run with command:
     HBNB_MYSQL_HOST=127.0.0.1 HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db
     HBNB_MYSQL_HOST=127.0.0.1 HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db
 """
-
 from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
