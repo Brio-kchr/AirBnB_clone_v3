@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
-Starts AirBnB Flask main application
+Starts AirBnB Flask main application run with command:
+    $ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd
+    HBNB_MYSQL_HOST=127.0.0.1 HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db
+    HBNB_MYSQL_HOST=127.0.0.1 HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db
 """
 
 from flask import Flask, jsonify
